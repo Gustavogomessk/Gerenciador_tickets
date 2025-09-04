@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Main</class>
+ <widget class="QMainWindow" name="Main">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1304</width>
+    <height>666</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GERENCIADOR DE TICKETS</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QMainWindow {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px;
+    }
+    QWidget#verticalLayoutWidget {
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+            stop:0 #1c1c1c, stop:1 #2a2a2a);
+        border-right: 1px solid #2e2e2e;
+    }
+    QPushButton {
+        background-color: #292929;
+        color: #e0e0e0;
+        border-radius: 8px;
+        padding: 8px 15px;
+        margin: 6px 10px;
+        font-weight: 600;
+        border: 1px solid transparent;
+        transition: all 150ms ease-in-out;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    QPushButton:hover {
+        background-color: #3c3c3c;
+        border: 1px solid #5a5a5a;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    }
+    QPushButton:pressed {
+        background-color: #222222;
+        box-shadow: none;
+    }
+    QLabel#label {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0;
+        qproperty-alignment: 'AlignHCenter | AlignVCenter';
+    }
+    QLabel {
+        color: #e0e0e0;
+        font-size: 16px;
+    }
+    QStatusBar {
+        background-color: #292929;
+        color: #b0b0b0;
+        border-top: 1px solid #3a3a3a;
+        font-size: 12px;
+    }
+    QToolBar {
+        background-color: #1e1e1e;
+        border-bottom: 1px solid #3a3a3a;
+        spacing: 6px;
+    }
+    QScrollBar:vertical {
+        background: #1e1e1e;
+        width: 12px;
+        margin: 20px 0 20px 0;
+        border-radius: 6px;
+    }
+    QScrollBar::handle:vertical {
+        background: #444;
+        min-height: 20px;
+        border-radius: 6px;
+    }
+    QScrollBar::handle:vertical:hover {
+        background: #666;
+    }
+    QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+        height: 0;
+    }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">/* Estilo Geral da Janela */
+QMainWindow {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+/* Menu Lateral */
+QWidget#verticalLayoutWidget {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #1c1c1c, stop:1 #2a2a2a);
+    border-right: 1px solid #2e2e2e;
+}
+
+/* Botões padrão */
+QPushButton {
+    background-color: #292929;
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 15px;
+    margin: 6px 10px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+QPushButton:hover {
+    background-color: #3c3c3c;
+    border: 1px solid #5a5a5a;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+}
+QPushButton:pressed {
+    background-color: #222222;
+    box-shadow: none;
+}
+
+/* Botão vermelho de sair */
+QPushButton#pushButton_3 {
+    background-color: #d32f2f;
+    color: white;
+}
+QPushButton#pushButton_3:hover {
+    background-color: #b71c1c;
+}
+
+/* Label do ícone */
+QLabel#label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+    qproperty-alignment: 'AlignHCenter | AlignVCenter';
+    border-radius: 15px;
+    border: 2px solid #444;
+    max-width: 80px;
+    max-height: 80px;
+    background-color: #555;
+}
+
+/* Labels de Títulos */
+QLabel {
+    color: #e0e0e0;
+    font-size: 16px;
+}
+QLabel#label_4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #90caf9;
+}
+
+/* Campo de texto simples */
+QLineEdit, QTextEdit {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 14px;
+}
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #90caf9;
+    background-color: #252525;
+}
+
+/* Tabela de dados */
+QTableWidget {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: none;
+    gridline-color: #333;
+    font-size: 13px;
+    selection-background-color: #455a64;
+    selection-color: #ffffff;
+}
+QHeaderView::section {
+    background-color: #263238;
+    color: #fff;
+    padding: 8px;
+    border: 1px solid #3a3a3a;
+    font-weight: bold;
+}
+QTableWidget::item:hover {
+    background-color: #37474f;
+}
+
+/* Barra de status */
+QStatusBar {
+    background-color: #292929;
+    color: #b0b0b0;
+    border-top: 1px solid #3a3a3a;
+    font-size: 12px;
+}
+
+/* ToolBar */
+QToolBar {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #3a3a3a;
+    spacing: 6px;
+}
+
+/* Scrollbars */
+QScrollBar:vertical {
+    background: #1e1e1e;
+    width: 12px;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+QScrollBar::handle:vertical {
+    background: #444;
+    min-height: 20px;
+    border-radius: 6px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #666;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+         margin-left: auto; margin-right: auto;
+         max-width: 80px;
+         max-height: 80px;
+         border-radius: 15px;
+         border: 2px solid #444;
+		background-color: grey
+        </string>
+        </property>
+        <property name="pixmap">
+         <pixmap>ticket.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_dash">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Dashboard</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_tel_tickets">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Tickets</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_tela_usurios">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Usuários</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>158</width>
+          <height>358</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: red</string>
+        </property>
+        <property name="text">
+         <string>Sair</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QTableWidget" name="tb_tickets">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>150</y>
+          <width>721</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>N°</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Título</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Cliente</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Prioridade</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Status</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Data de Criação</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ações</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="btn_novo_ticket">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>60</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Novo Ticket</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="search_tickets">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>59</y>
+          <width>231</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <widget class="QTableWidget" name="tb_users">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>150</y>
+          <width>631</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>Nome</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>E-mail</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Tipo</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Quant. tickets</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Criado</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ações</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="btn_novo_usuario">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>60</y>
+          <width>191</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Adicionar Usuário</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Search_user">
+        <property name="geometry">
+         <rect>
+          <x>580</x>
+          <y>70</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <widget class="QPushButton" name="btn_cadastrar_usuario">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>400</y>
+          <width>191</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>CADASTRAR</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="name_user">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>210</y>
+          <width>651</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>180</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nome</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>260</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>E-mail</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="email_user">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>290</y>
+          <width>381</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>260</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Senha</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Password_user">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>290</y>
+          <width>251</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>340</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Admin</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cliente</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>320</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tipo</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <widget class="QLineEdit" name="titulo_ticket">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>90</y>
+          <width>651</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="descricao_ticket">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>140</y>
+          <width>651</width>
+          <height>381</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>60</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Título</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>120</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Descrição</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_cadastrar_ticket">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>550</y>
+          <width>191</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Salvar e Abrir ticket</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>20</y>
+          <width>241</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>CRIAR NOVO TICKET</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>321</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">Background-color: Grey;
+border-radius: 30px</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>70</y>
+          <width>141</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tickets Abertos</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_quant_tickets">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>70</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>30</y>
+          <width>321</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">Background-color: Grey;
+border-radius: 30px</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_quant_tickets_finalizados">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>70</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>80</y>
+          <width>141</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tickets Finalizados</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>30</y>
+          <width>321</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">Background-color: Grey;
+border-radius: 30px</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>720</x>
+          <y>80</y>
+          <width>141</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Usuários</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="txt_quant_tickets_finalizados_2">
+        <property name="geometry">
+         <rect>
+          <x>890</x>
+          <y>70</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QGraphicsView" name="graphics_tickets_anual">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>211</y>
+          <width>991</width>
+          <height>341</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
