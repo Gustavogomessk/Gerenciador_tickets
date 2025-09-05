@@ -787,7 +787,7 @@ border-radius: 30px</string>
          <string/>
         </property>
        </widget>
-       <widget class="QGraphicsView" name="graphics_tickets_anual">
+       <widget class="QGraphicsView" name="widget_grafico">
         <property name="geometry">
          <rect>
           <x>25</x>
@@ -795,6 +795,58 @@ border-radius: 30px</string>
           <width>991</width>
           <height>341</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_total_tickets">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>60</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_baixa">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>530</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_media">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>530</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_alta">
+        <property name="geometry">
+         <rect>
+          <x>780</x>
+          <y>530</y>
+          <width>71</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>

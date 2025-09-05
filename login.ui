@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginWindow</class>
+ <widget class="QWidget" name="LoginWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>300</width><height>200</height></rect>
+  </property>
+  <property name="windowTitle"><string>Login</string></property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLineEdit" name="input_email">
+     <property name="placeholderText"><string>Email</string></property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="input_senha">
+     <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+     <property name="placeholderText"><string>Senha</string></property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_login">
+     <property name="text"><string>Entrar</string></property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
