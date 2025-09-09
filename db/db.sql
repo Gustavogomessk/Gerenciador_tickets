@@ -32,10 +32,11 @@ CREATE TABLE tickets (
 ) ENGINE=InnoDB;
 
 -- Tabela de comentários
+-- Tabela de comentários (corrigida)
 CREATE TABLE comentarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ticket_id INT NOT NULL,
-    autor_id INT NOT NULL,
+    autor_id INT, -- removido NOT NULL
     comentario TEXT NOT NULL,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
     
@@ -44,3 +45,4 @@ CREATE TABLE comentarios (
     FOREIGN KEY (autor_id) REFERENCES usuarios(id)
         ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
