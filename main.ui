@@ -18,7 +18,7 @@
     QMainWindow {
         background-color: #121212;
         color: #e0e0e0;
-        font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         font-size: 14px;
     }
     QWidget#verticalLayoutWidget {
@@ -92,7 +92,7 @@
 QMainWindow {
     background-color: #121212;
     color: #e0e0e0;
-    font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
 }
 
@@ -395,9 +395,25 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          <rect>
           <x>500</x>
           <y>59</y>
-          <width>231</width>
+          <width>200</width>
           <height>41</height>
          </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Buscar tickets...</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_buscar_tickets">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>59</y>
+          <width>80</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
         </property>
        </widget>
       </widget>
@@ -460,9 +476,25 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          <rect>
           <x>580</x>
           <y>70</y>
-          <width>171</width>
+          <width>150</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Buscar usuários...</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_buscar_users">
+        <property name="geometry">
+         <rect>
+          <x>740</x>
+          <y>70</y>
+          <width>80</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
         </property>
        </widget>
       </widget>
@@ -642,6 +674,49 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
         <property name="text">
          <string>Salvar e Abrir ticket</string>
         </property>
+       </widget>
+       <widget class="QLabel" name="label_prioridade">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>540</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Prioridade</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="combo_prioridade">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>560</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Baixa</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Média</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Alta</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Urgente</string>
+         </property>
+        </item>
        </widget>
        <widget class="QLabel" name="label_4">
         <property name="geometry">
