@@ -18,12 +18,12 @@
     QMainWindow {
         background-color: #121212;
         color: #e0e0e0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
         font-size: 14px;
     }
     QWidget#verticalLayoutWidget {
-        background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-            stop:0 #1c1c1c, stop:1 #2a2a2a);
+        	background-color: grey;
+        
         border-right: 1px solid #2e2e2e;
     }
     QPushButton {
@@ -92,7 +92,7 @@
 QMainWindow {
     background-color: #121212;
     color: #e0e0e0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
 }
 
@@ -337,7 +337,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          <rect>
           <x>90</x>
           <y>150</y>
-          <width>721</width>
+          <width>911</width>
           <height>351</height>
          </rect>
         </property>
@@ -394,7 +394,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
         <property name="geometry">
          <rect>
           <x>500</x>
-          <y>59</y>
+          <y>60</y>
           <width>200</width>
           <height>41</height>
          </rect>
@@ -407,8 +407,8 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
         <property name="geometry">
          <rect>
           <x>710</x>
-          <y>59</y>
-          <width>80</width>
+          <y>60</y>
+          <width>101</width>
           <height>41</height>
          </rect>
         </property>
@@ -423,7 +423,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          <rect>
           <x>130</x>
           <y>150</y>
-          <width>631</width>
+          <width>871</width>
           <height>351</height>
          </rect>
         </property>
@@ -474,10 +474,10 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
        <widget class="QLineEdit" name="Search_user">
         <property name="geometry">
          <rect>
-          <x>580</x>
-          <y>70</y>
-          <width>150</width>
-          <height>31</height>
+          <x>549</x>
+          <y>60</y>
+          <width>181</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="placeholderText">
@@ -488,9 +488,9 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
         <property name="geometry">
          <rect>
           <x>740</x>
-          <y>70</y>
-          <width>80</width>
-          <height>31</height>
+          <y>60</y>
+          <width>111</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -586,8 +586,8 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          <rect>
           <x>120</x>
           <y>340</y>
-          <width>171</width>
-          <height>22</height>
+          <width>181</width>
+          <height>31</height>
          </rect>
         </property>
         <item>
