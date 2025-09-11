@@ -1,5 +1,4 @@
-
-import sys
+import sys, res
 import random
 import string
 import mysql.connector
@@ -7,8 +6,146 @@ from PyQt5 import uic, QtWidgets, QtGui, QtCore
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-usuario_logado = None
 
+
+usuario_logado = None
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(450, 550)
+        Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.widget = QtWidgets.QWidget(Form)
+        self.widget.setGeometry(QtCore.QRect(30, 30, 370, 480))
+        self.widget.setStyleSheet("QPushButton#btn_login{    \n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(20, 47, 78, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"    color:rgba(255, 255, 255, 210);\n"
+"    border-radius:5px;\n"
+"}\n"
+"QPushButton#btn_login:hover{    \n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 rgba(105, 118, 132, 226));\n"
+"}\n"
+"QPushButton#btn_login:pressed{    \n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(105, 118, 132, 200);\n"
+"}\n"
+"\n"
+
+)
+        self.widget.setObjectName("widget")
+        self.label = QtWidgets.QLabel(self.widget)
+        self.label.setGeometry(QtCore.QRect(30, 30, 300, 420))
+        self.label.setStyleSheet("border-image: url(background_new.png);\n"
+"border-radius:20px;")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.widget)
+        self.label_2.setGeometry(QtCore.QRect(30, 30, 300, 420))
+        self.label_2.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.715909, stop:0 rgba(0, 0, 0, 9), stop:0.375 rgba(0, 0, 0, 50), stop:0.835227 rgba(0, 0, 0, 75));\n"
+"border-radius:20px;")
+        self.label_2.setText("")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.widget)
+        self.label_3.setGeometry(QtCore.QRect(40, 60, 280, 390))
+        self.label_3.setStyleSheet("background-color:rgba(0, 0, 0, 100);\n"
+"border-radius:15px;")
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.widget)
+        self.label_4.setGeometry(QtCore.QRect(135, 95, 90, 40))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("color:rgba(255, 255, 255, 210);")
+        self.label_4.setObjectName("label_4")
+        self.input_email = QtWidgets.QLineEdit(self.widget)
+        self.input_email.setGeometry(QtCore.QRect(80, 165, 200, 40))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.input_email.setFont(font)
+        self.input_email.setStyleSheet("background-color:rgba(0, 0, 0, 0);\n"
+"border:none;\n"
+"border-bottom:2px solid rgba(105, 118, 132, 255);\n"
+"color:rgba(255, 255, 255, 230);\n"
+"padding-bottom:7px;")
+        self.input_email.setObjectName("input_email")
+        self.input_senha = QtWidgets.QLineEdit(self.widget)
+        self.input_senha.setGeometry(QtCore.QRect(80, 230, 200, 40))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.input_senha.setFont(font)
+        self.input_senha.setStyleSheet("background-color:rgba(0, 0, 0, 0);\n"
+"border:none;\n"
+"border-bottom:2px solid rgba(105, 118, 132, 255);\n"
+"color:rgba(255, 255, 255, 230);\n"
+"padding-bottom:7px;")
+        self.input_senha.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.input_senha.setObjectName("input_senha")
+        self.pushButton = QtWidgets.QPushButton(self.widget)
+        self.pushButton.setGeometry(QtCore.QRect(80, 310, 200, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setObjectName("btn_login")
+        self.label_5 = QtWidgets.QLabel(self.widget)
+        self.label_5.setGeometry(QtCore.QRect(91, 358, 191, 21))
+        self.label_5.setStyleSheet("color:rgba(255, 255, 255, 140);")
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.widget)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(105, 399, 141, 31))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+       
+        font = QtGui.QFont()
+        font.setFamily("Social Media Circled")
+        font.setPointSize(15)
+       
+      
+   
+        font = QtGui.QFont()
+        font.setFamily("Social Media Circled")
+        font.setPointSize(15)
+      
+        
+        
+        font = QtGui.QFont()
+        font.setFamily("Social Media Circled")
+        font.setPointSize(15)
+       
+      
+        
+        font = QtGui.QFont()
+        font.setFamily("Social Media Circled")
+        font.setPointSize(15)
+        
+      
+
+        self.label.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0, color=QtGui.QColor(234, 221, 186, 100)))
+        self.label_3.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0, color=QtGui.QColor(105, 118, 132, 100)))
+        self.pushButton.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3, color=QtGui.QColor(105, 118, 132, 100)))
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+        #pix = QtGui.QPixmap(self.widget.size())
+        #self.widget.render(pix)
+        #pix.save("save.png")
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Login - Sistema de Tickets"))
+        self.label_4.setText(_translate("Form", "Log In"))
+        self.input_email.setPlaceholderText(_translate("Form", "  Email"))
+        self.input_senha.setPlaceholderText(_translate("Form", "  Senha"))
+        self.pushButton.setText(_translate("Form", "L o g  I n"))
+
+        
 def connect():
     return mysql.connector.connect(
         user='root', password='', host='localhost', port='3306', database='gestao_tickets'
@@ -44,32 +181,60 @@ def criar_botao_com_icone(texto, icone_texto, cor_fundo="#4CAF50", cor_texto="wh
     """)
     return botao
 
-# =====  LOGIN  =====
 def fazer_login():
-    global usuario_logado
-    email = login.input_email.text()
-    senha = login.input_senha.text()
+    global usuario_logado, ui, Form
+    
+    email = ui.input_email.text().strip()
+    senha = ui.input_senha.text().strip()
 
     if not email or not senha:
-        QtWidgets.QMessageBox.warning(login, "Erro", "Preencha todos os campos.")
+        QtWidgets.QMessageBox.warning(Form, "Erro", "Preencha todos os campos.")
         return
 
+    # Mostrar mensagem de carregamento
+    QtWidgets.QApplication.processEvents()
+    
+    conn = None
+    cursor = None
+    
     try:
-        conn = connect()
+        # Conectar com timeout
+        conn = mysql.connector.connect(
+            user='root', 
+            password='', 
+            host='localhost', 
+            port='3306', 
+            database='gestao_tickets',
+            connection_timeout=10,
+            autocommit=True
+        )
         cursor = conn.cursor()
-        cursor.execute("SELECT id, tipo FROM usuarios WHERE email = %s AND senha = %s", (email, senha))
+        
+        # Verificar se o usuário existe
+        cursor.execute("SELECT id, tipo, nome FROM usuarios WHERE email = %s AND senha = %s", (email, senha))
         resultado = cursor.fetchone()
+        
         if resultado:
-            usuario_logado = {"id": resultado[0], "tipo": resultado[1]}
-            login.close()
+            usuario_logado = {"id": resultado[0], "tipo": resultado[1], "nome": resultado[2]}
+            QtWidgets.QMessageBox.information(Form, "Sucesso", f"Bem-vindo, {resultado[2]}!")
+            Form.close()
             iniciar_aplicacao_principal()
         else:
-            QtWidgets.QMessageBox.warning(login, "Erro", "Credenciais inválidas.")
+            QtWidgets.QMessageBox.warning(Form, "Erro", "Email ou senha incorretos.")
+            
     except mysql.connector.Error as e:
-        QtWidgets.QMessageBox.critical(login, "Erro no banco", str(e))
-    finally:
-        cursor.close()
-        conn.close()
+        error_msg = str(e)
+        if "Can't connect to MySQL server" in error_msg:
+            QtWidgets.QMessageBox.critical(Form, "Erro de Conexão", 
+                "Não foi possível conectar ao banco de dados.\n\n"
+                "Verifique se:\n"
+                "• O XAMPP está rodando\n"
+                "• O MySQL está ativo\n"
+                "• A porta 3306 está livre")
+        else:
+            QtWidgets.QMessageBox.critical(Form, "Erro no Banco", f"Erro: {error_msg}")
+    except Exception as e:
+        QtWidgets.QMessageBox.critical(Form, "Erro", f"Erro inesperado: {e}")
 
 # ===== Inicia UI Principal =====
 def iniciar_aplicacao_principal():
@@ -678,52 +843,113 @@ def excluir_ticket(ticket_id):
 
 # ===== Atualizar Dashboard =====
 def atualizar_dashboard():
-    conn = connect(); cursor = conn.cursor()
-    user_id = usuario_logado["id"]
+    try:
+        conn = connect()
+        cursor = conn.cursor()
+        user_id = usuario_logado["id"]
+        
 
-    if usuario_logado["tipo"] == "admin":
-        cursor.execute("SELECT COUNT(*) FROM tickets")
-    else:
-        cursor.execute("SELECT COUNT(*) FROM tickets WHERE cliente_id = %s", (user_id,))
-    total = cursor.fetchone()[0]
+        # Total de tickets
+        if usuario_logado["tipo"] == "admin":
+            cursor.execute("SELECT COUNT(*) FROM tickets")
+        else:
+            cursor.execute("SELECT COUNT(*) FROM tickets WHERE cliente_id = %s", (user_id,))
+        total = cursor.fetchone()[0]
 
-    query_prioridade = ("SELECT prioridade, COUNT(*) FROM tickets WHERE cliente_id = %s GROUP BY prioridade"
-                        if usuario_logado["tipo"] != "admin"
-                        else "SELECT prioridade, COUNT(*) FROM tickets GROUP BY prioridade")
-    cursor.execute(query_prioridade, (user_id,) if usuario_logado["tipo"] != "admin" else ())
-    contagens = dict(cursor.fetchall())
+        # Contagem por prioridade
+        query_prioridade = ("SELECT prioridade, COUNT(*) FROM tickets WHERE cliente_id = %s GROUP BY prioridade"
+                            if usuario_logado["tipo"] != "admin"
+                            else "SELECT prioridade, COUNT(*) FROM tickets GROUP BY prioridade")
+        cursor.execute(query_prioridade, (user_id,) if usuario_logado["tipo"] != "admin" else ())
+        contagens = dict(cursor.fetchall())
+        
+        # Contagem por status
+        query_status = ("SELECT status, COUNT(*) FROM tickets WHERE cliente_id = %s GROUP BY status"
+                       if usuario_logado["tipo"] != "admin"
+                       else "SELECT status, COUNT(*) FROM tickets GROUP BY status")
+        cursor.execute(query_status, (user_id,) if usuario_logado["tipo"] != "admin" else ())
+        status_contagens = dict(cursor.fetchall())
 
-    conn.close()
+        conn.close()
 
-    tela.label_total_tickets.setText(str(total))
-    mapping = {
-    "baixa": tela.label_baixa,
-    "media": tela.label_media,
-    "alta": tela.label_alta,
-    }
+        # Atualizar labels (se existirem)
+        if hasattr(tela, 'label_total_tickets'):
+            tela.label_total_tickets.setText(str(total))
+        
+        # Mapeamento de prioridades
+        mapping_prioridade = {
+            "baixa": getattr(tela, 'label_baixa', None),
+            "media": getattr(tela, 'label_media', None),
+            "alta": getattr(tela, 'label_alta', None),
+            "urgente": getattr(tela, 'label_urgente', None)
+        }
 
-    for prio in ["baixa", "media", "alta"]: 
-        mapping[prio].setText(str(contagens.get(prio, 0)))
+        for prio in ["baixa", "media", "alta", "urgente"]: 
+            if mapping_prioridade[prio]:
+                mapping_prioridade[prio].setText(str(contagens.get(prio, 0)))
 
+        # Mapeamento de status
+        mapping_status = {
+            "aberto": getattr(tela, 'label_aberto', None),
+            "em_andamento": getattr(tela, 'label_em_andamento', None),
+            "resolvido": getattr(tela, 'label_resolvido', None),
+            "fechado": getattr(tela, 'label_fechado', None)
+        }
 
-    plotar_grafico([contagens.get("baixa", 0), contagens.get("media", 0), contagens.get("alta", 0)])
+        for status in ["aberto", "em_andamento", "resolvido", "fechado"]:
+            if mapping_status[status]:
+                mapping_status[status].setText(str(status_contagens.get(status, 0)))
+
+        # Plotar gráfico
+        if hasattr(tela, 'widget_grafico'):
+            plotar_grafico([contagens.get("baixa", 0), contagens.get("media", 0), contagens.get("alta", 0), contagens.get("urgente", 0)])
+        
+        
+    except Exception as e:
+        QtWidgets.QMessageBox.critical(tela, "Erro", f"Erro ao atualizar dashboard: {e}")
 
 # ===== Plotar Gráfico =====
 def plotar_grafico(dados):
-    fig = Figure(figsize=(4, 3)); canvas = FigureCanvas(fig)
-    ax = fig.add_subplot(111)
-    ax.bar(['Baixa', 'Média', 'Alta'], dados, color=['green', 'orange', 'red'])
-    ax.set_title("Tickets por Prioridade"); ax.set_ylabel("Quantidade")
+    try:
+        fig = Figure(figsize=(4, 3))
+        canvas = FigureCanvas(fig)
+        ax = fig.add_subplot(111)
+        
+        # Dados para o gráfico (baixa, media, alta, urgente)
+        labels = ['Baixa', 'Média', 'Alta', 'Urgente']
+        colors = ['green', 'orange', 'red', 'purple']
+        
+        # Garantir que temos 4 valores
+        while len(dados) < 4:
+            dados.append(0)
+        
+        ax.bar(labels, dados, color=colors)
+        ax.set_title("Tickets por Prioridade")
+        ax.set_ylabel("Quantidade")
+        
+        # Limpar layout anterior
+        if hasattr(tela, 'widget_grafico'):
+            layout = QtWidgets.QVBoxLayout(tela.widget_grafico)
+            for i in reversed(range(layout.count())):
+                layout.itemAt(i).widget().setParent(None)
+            layout.addWidget(canvas)
+            canvas.draw()
+            
+        
+    except Exception as e:
+        pass  # Falha silenciosa no gráfico
 
-    layout = QtWidgets.QVBoxLayout(tela.widget_grafico)
-    for i in reversed(range(layout.count())):
-        layout.itemAt(i).widget().setParent(None)
-    layout.addWidget(canvas)
-    canvas.draw()
 
-#  ==== Início do App ====
-app = QtWidgets.QApplication(sys.argv)
-login = uic.loadUi("login.ui")
-login.btn_login.clicked.connect(fazer_login)
-login.show()
-sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+
+    # Conectar o botão de login
+    ui.pushButton.clicked.connect(fazer_login)
+
+    Form.show()
+    sys.exit(app.exec_())
+
