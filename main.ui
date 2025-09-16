@@ -11,221 +11,189 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>GERENCIADOR DE TICKETS</string>
+   <string>🎫 Sistema de Gerenciamento de Tickets</string>
   </property>
   <property name="styleSheet">
    <string notr="true">
     QMainWindow {
-        background-color: #121212;
-        color: #e0e0e0;
-        font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+            stop:0 #1a1a2e, stop:1 #16213e);
+        color: #ffffff;
+        font-family: &quot;Segoe UI&quot;, &quot;Roboto&quot;, sans-serif;
         font-size: 14px;
     }
+    
     QWidget#verticalLayoutWidget {
-        	background-color: grey;
-        
-        border-right: 1px solid #2e2e2e;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+            stop:0 #0f3460, stop:1 #533a71);
+        border-right: 2px solid #e94560;
+        border-radius: 0px;
     }
+    
     QPushButton {
-        background-color: #292929;
-        color: #e0e0e0;
-        border-radius: 8px;
-        padding: 8px 15px;
-        margin: 6px 10px;
-        font-weight: 600;
-        border: 1px solid transparent;
-        transition: all 150ms ease-in-out;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+            stop:0 #e94560, stop:1 #d63031);
+        color: white;
+        border-radius: 12px;
+        padding: 12px 20px;
+        margin: 8px 12px;
+        font-weight: 700;
+        font-size: 14px;
+        border: none;
+        text-align: center;
     }
+    
     QPushButton:hover {
-        background-color: #3c3c3c;
-        border: 1px solid #5a5a5a;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+            stop:0 #ff6b7a, stop:1 #e74c3c);
     }
+    
     QPushButton:pressed {
-        background-color: #222222;
-        box-shadow: none;
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+            stop:0 #c0392b, stop:1 #a93226);
     }
-    QLabel#label {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding: 0;
-        qproperty-alignment: 'AlignHCenter | AlignVCenter';
+    
+    QPushButton#pushButton_3 {
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+            stop:0 #e74c3c, stop:1 #c0392b);
+        color: white;
     }
+    
+    QPushButton#pushButton_3:hover {
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+            stop:0 #ff4757, stop:1 #e74c3c);
+    }
+    
     QLabel {
-        color: #e0e0e0;
+        color: #ffffff;
         font-size: 16px;
+        font-weight: 500;
     }
+    
+    QLabel#label {
+        margin: 20px auto;
+        padding: 10px;
+        qproperty-alignment: 'AlignHCenter | AlignVCenter';
+        border-radius: 20px;
+        border: 3px solid #e94560;
+        background-color: rgba(233, 69, 96, 0.1);
+    }
+    
+    QLineEdit, QTextEdit, QComboBox {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid #e94560;
+        border-radius: 8px;
+        padding: 10px 15px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    QLineEdit:focus, QTextEdit:focus, QComboBox:focus {
+        border: 2px solid #00d2d3;
+        background-color: rgba(0, 210, 211, 0.1);
+    }
+    
+    QLineEdit::placeholder, QTextEdit::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+        font-style: italic;
+    }
+    
+    QTableWidget {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+        border: 1px solid #e94560;
+        border-radius: 10px;
+        gridline-color: rgba(233, 69, 96, 0.3);
+        font-size: 13px;
+        selection-background-color: #e94560;
+        selection-color: #ffffff;
+        alternate-background-color: rgba(233, 69, 96, 0.1);
+    }
+    
+    QHeaderView::section {
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+            stop:0 #e94560, stop:1 #d63031);
+        color: #ffffff;
+        padding: 12px;
+        border: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    
+    QTableWidget::item {
+        padding: 8px;
+        border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+    }
+    
+    QTableWidget::item:hover {
+        background-color: rgba(233, 69, 96, 0.2);
+    }
+    
+    QTableWidget::item:selected {
+        background-color: #e94560;
+    }
+    
     QStatusBar {
-        background-color: #292929;
-        color: #b0b0b0;
-        border-top: 1px solid #3a3a3a;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0, 
+            stop:0 #0f3460, stop:1 #533a71);
+        color: #ffffff;
+        border-top: 2px solid #e94560;
         font-size: 12px;
+        font-weight: 500;
     }
+    
     QToolBar {
-        background-color: #1e1e1e;
-        border-bottom: 1px solid #3a3a3a;
-        spacing: 6px;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0, 
+            stop:0 #1a1a2e, stop:1 #16213e);
+        border-bottom: 2px solid #e94560;
+        spacing: 8px;
     }
+    
     QScrollBar:vertical {
-        background: #1e1e1e;
-        width: 12px;
-        margin: 20px 0 20px 0;
-        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        width: 14px;
+        border-radius: 7px;
+        margin: 2px;
     }
+    
     QScrollBar::handle:vertical {
-        background: #444;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0, 
+            stop:0 #e94560, stop:1 #d63031);
         min-height: 20px;
-        border-radius: 6px;
+        border-radius: 7px;
+        margin: 2px;
     }
+    
     QScrollBar::handle:vertical:hover {
-        background: #666;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0, 
+            stop:0 #ff6b7a, stop:1 #e74c3c);
     }
+    
     QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-        height: 0;
+        height: 0px;
+    }
+    
+    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+        background: none;
     }
    </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">/* Estilo Geral da Janela */
-QMainWindow {
-    background-color: #121212;
-    color: #e0e0e0;
-    font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-}
-
-/* Menu Lateral */
-QWidget#verticalLayoutWidget {
-    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-        stop:0 #1c1c1c, stop:1 #2a2a2a);
-    border-right: 1px solid #2e2e2e;
-}
-
-/* Botões padrão */
-QPushButton {
-    background-color: #292929;
-    color: #e0e0e0;
-    border-radius: 8px;
-    padding: 8px 15px;
-    margin: 6px 10px;
-    font-weight: 600;
-    border: 1px solid transparent;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-QPushButton:hover {
-    background-color: #3c3c3c;
-    border: 1px solid #5a5a5a;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-}
-QPushButton:pressed {
-    background-color: #222222;
-    box-shadow: none;
-}
-
-/* Botão vermelho de sair */
-QPushButton#pushButton_3 {
-    background-color: #d32f2f;
-    color: white;
-}
-QPushButton#pushButton_3:hover {
-    background-color: #b71c1c;
-}
-
-/* Label do ícone */
-QLabel#label {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 0;
-    qproperty-alignment: 'AlignHCenter | AlignVCenter';
-    border-radius: 15px;
-    border: 2px solid #444;
-    max-width: 80px;
-    max-height: 80px;
-    background-color: #555;
-}
-
-/* Labels de Títulos */
-QLabel {
-    color: #e0e0e0;
-    font-size: 16px;
-}
-QLabel#label_4 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #90caf9;
-}
-
-/* Campo de texto simples */
-QLineEdit, QTextEdit {
-    background-color: #1e1e1e;
-    border: 1px solid #444;
-    border-radius: 6px;
-    padding: 6px 10px;
-    color: #fff;
-    font-size: 14px;
-}
-QLineEdit:focus, QTextEdit:focus {
-    border: 1px solid #90caf9;
-    background-color: #252525;
-}
-
-/* Tabela de dados */
-QTableWidget {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-    border: none;
-    gridline-color: #333;
-    font-size: 13px;
-    selection-background-color: #455a64;
-    selection-color: #ffffff;
-}
-QHeaderView::section {
-    background-color: #263238;
-    color: #fff;
-    padding: 8px;
-    border: 1px solid #3a3a3a;
-    font-weight: bold;
-}
-QTableWidget::item:hover {
-    background-color: #37474f;
-}
-
-/* Barra de status */
-QStatusBar {
-    background-color: #292929;
-    color: #b0b0b0;
-    border-top: 1px solid #3a3a3a;
-    font-size: 12px;
-}
-
-/* ToolBar */
-QToolBar {
-    background-color: #1e1e1e;
-    border-bottom: 1px solid #3a3a3a;
-    spacing: 6px;
-}
-
-/* Scrollbars */
-QScrollBar:vertical {
-    background: #1e1e1e;
-    width: 12px;
-    margin: 20px 0;
-    border-radius: 6px;
-}
-QScrollBar::handle:vertical {
-    background: #444;
-    min-height: 20px;
-    border-radius: 6px;
-}
-QScrollBar::handle:vertical:hover {
-    background: #666;
-}
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-    height: 0;
-}
-</string>
+    <string notr="true">
+    /* Estilos consistentes com o design principal */
+    QLabel#label_4 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #00d2d3;
+        text-align: center;
+        padding: 10px;
+        background: rgba(0, 210, 211, 0.1);
+        border-radius: 10px;
+        border: 2px solid #00d2d3;
+    }
+    </string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -243,29 +211,18 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
         </property>
         <property name="styleSheet">
          <string notr="true">
-         margin-left: auto; margin-right: auto;
+         margin: 20px auto;
          max-width: 80px;
          max-height: 80px;
-         border-radius: 15px;
-         border: 2px solid #444;
-		background-color: grey
+         border-radius: 20px;
+         border: 3px solid #e94560;
+         background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+             stop:0 #e94560, stop:1 #d63031);
+         padding: 10px;
         </string>
         </property>
         <property name="pixmap">
          <pixmap>ticket.png</pixmap>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_dash">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Dashboard</string>
         </property>
        </widget>
       </item>
@@ -278,7 +235,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </size>
         </property>
         <property name="text">
-         <string>Tickets</string>
+         <string>🎫 Tickets</string>
         </property>
        </widget>
       </item>
@@ -291,7 +248,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </size>
         </property>
         <property name="text">
-         <string>Usuários</string>
+         <string>👥 Usuários</string>
         </property>
        </widget>
       </item>
@@ -320,7 +277,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          <string notr="true">background-color: red</string>
         </property>
         <property name="text">
-         <string>Sair</string>
+         <string>🚪 Sair</string>
         </property>
        </widget>
       </item>
@@ -329,7 +286,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QTableWidget" name="tb_tickets">
@@ -387,7 +344,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>Novo Ticket</string>
+         <string>✨ Novo Ticket</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="search_tickets">
@@ -400,7 +357,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="placeholderText">
-         <string>Buscar tickets...</string>
+         <string>🔍 Buscar tickets...</string>
         </property>
        </widget>
        <widget class="QPushButton" name="btn_buscar_tickets">
@@ -413,7 +370,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>Buscar</string>
+         <string>🔎 Buscar</string>
         </property>
        </widget>
       </widget>
@@ -468,7 +425,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>Adicionar Usuário</string>
+         <string>➕ Adicionar Usuário</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="Search_user">
@@ -481,7 +438,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="placeholderText">
-         <string>Buscar usuários...</string>
+         <string>🔍 Buscar usuários...</string>
         </property>
        </widget>
        <widget class="QPushButton" name="btn_buscar_users">
@@ -494,7 +451,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>Buscar</string>
+         <string>🔎 Buscar</string>
         </property>
        </widget>
       </widget>
@@ -509,7 +466,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>CADASTRAR</string>
+         <string>✅ CADASTRAR</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="name_user">
@@ -672,7 +629,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>Salvar e Abrir ticket</string>
+         <string>💾 Salvar Ticket</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_prioridade">
@@ -728,200 +685,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
          </rect>
         </property>
         <property name="text">
-         <string>CRIAR NOVO TICKET</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_5">
-       <widget class="QLabel" name="label_11">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>30</y>
-          <width>321</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Background-color: Grey;
-border-radius: 30px</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_9">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>70</y>
-          <width>141</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tickets Abertos</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="txt_quant_tickets">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>70</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_12">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>30</y>
-          <width>321</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Background-color: Grey;
-border-radius: 30px</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="txt_quant_tickets_finalizados">
-        <property name="geometry">
-         <rect>
-          <x>560</x>
-          <y>70</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_10">
-        <property name="geometry">
-         <rect>
-          <x>390</x>
-          <y>80</y>
-          <width>141</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tickets Finalizados</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_13">
-        <property name="geometry">
-         <rect>
-          <x>710</x>
-          <y>30</y>
-          <width>321</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Background-color: Grey;
-border-radius: 30px</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_14">
-        <property name="geometry">
-         <rect>
-          <x>720</x>
-          <y>80</y>
-          <width>141</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Usuários</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="txt_quant_tickets_finalizados_2">
-        <property name="geometry">
-         <rect>
-          <x>890</x>
-          <y>70</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QGraphicsView" name="widget_grafico">
-        <property name="geometry">
-         <rect>
-          <x>25</x>
-          <y>211</y>
-          <width>991</width>
-          <height>341</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_total_tickets">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>60</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_baixa">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>530</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_media">
-        <property name="geometry">
-         <rect>
-          <x>540</x>
-          <y>530</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_alta">
-        <property name="geometry">
-         <rect>
-          <x>780</x>
-          <y>530</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
+         <string>✨ CRIAR NOVO TICKET</string>
         </property>
        </widget>
       </widget>
