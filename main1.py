@@ -22,8 +22,8 @@ def criar_botao_com_icone(texto, icone_texto, cor_fundo="#4CAF50", cor_texto="wh
     """Cria um botão com ícone usando texto como ícone"""
     botao = QtWidgets.QPushButton()
     botao.setText(f"{icone_texto} {texto}")
-    botao.setMinimumSize(80, 35)
-    botao.setMaximumSize(100, 40)
+    botao.setMinimumSize(100, 45)
+    botao.setMaximumSize(120, 50)
     botao.setStyleSheet(f"""
         QPushButton {{
             background-color: {cor_fundo};
@@ -226,6 +226,7 @@ def carregar_tabela_users():
     tb = tela.tb_users
     tb.setRowCount(0)
     tb.setColumnCount(7)  # Adicionar coluna de ações
+    
     
     # Definir cabeçalhos
     headers = ["ID", "Nome", "E-mail", "Tipo", "Quant. tickets", "Criado", "Ações"]
@@ -678,9 +679,49 @@ def excluir_ticket(ticket_id):
 
 
 
-#  ==== Início do App ====
+# ==== Início do App ====
 app = QtWidgets.QApplication(sys.argv)
-login = uic.loadUi("login.ui")
+login = uic.loadUi("loginUi4.ui")
 login.btn_login.clicked.connect(fazer_login)
+
+# Janela sem borda e transparente
+login.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+login.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+# Habilitar arrastar a janela
+def mousePressEvent(event):
+    if event.button() == QtCore.Qt.LeftButton:
+        login.dragPos = event.globalPos()
+def mouseMoveEvent(event):
+    if event.buttons() == QtCore.Qt.LeftButton:
+        login.move(login.pos() + event.globalPos() - login.dragPos)
+        login.dragPos = event.globalPos()
+        event.accept()
+
+login.mousePressEvent = mousePressEvent
+login.mouseMoveEvent = mouseMoveEvent
+
+# Mostrar só no final
 login.show()
 sys.exit(app.exec_())
+
+login.setStyleSheet("""
+    QLineEdit {
+        border: 2px solid #3498db;
+        border-radius: 10px;
+        padding: 6px;
+        background: #ecf0f1;
+        selection-background-color: #3498db;
+    }
+    QPushButton {
+        background-color: #2980b9;
+        color: white;
+        border-radius: 10px;
+        padding: 6px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #1f6391;
+    }
+""")
+

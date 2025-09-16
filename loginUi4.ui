@@ -60,7 +60,7 @@ QPushButton#pushButton_2:pressed, #pushButton_3:pressed, #pushButton_4:pressed, 
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/images/background.png);
+     <string notr="true">border-image: url(:/images/background_new.png);
 border-radius:20px;</string>
     </property>
     <property name="text">
@@ -78,8 +78,7 @@ border-radius:20px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.715909, stop:0 rgba(0, 0, 0, 9), stop:0.375 rgba(0, 0, 0, 50), stop:0.835227 rgba(0, 0, 0, 75));
-border-radius:20px;
-background-image: url(background.png);</string>
+border-radius:20px;</string>
     </property>
     <property name="text">
      <string/>
@@ -101,12 +100,15 @@ border-radius:15px;</string>
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap>../../Pictures/fundopreto.jpg</pixmap>
+    </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>135</x>
-      <y>95</y>
+      <x>130</x>
+      <y>110</y>
       <width>90</width>
       <height>40</height>
      </rect>
@@ -122,7 +124,13 @@ border-radius:15px;</string>
      <string notr="true">color:rgba(255, 255, 255, 210);</string>
     </property>
     <property name="text">
-     <string>Log In</string>
+     <string>Login</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::RichText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="input_email">
@@ -147,7 +155,7 @@ color:rgba(255, 255, 255, 230);
 padding-bottom:7px;</string>
     </property>
     <property name="placeholderText">
-     <string>  User Name</string>
+     <string>E-mail</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="input_senha">
@@ -175,7 +183,7 @@ padding-bottom:7px;</string>
      <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
-     <string>  Password</string>
+     <string>Senha</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_login">
@@ -184,18 +192,78 @@ padding-bottom:7px;</string>
       <x>80</x>
       <y>310</y>
       <width>200</width>
-      <height>40</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:1, y2:0,
+        stop:0 #000000, stop:1 #ffffff
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ffffff, stop:1 #000000
+    );
+}
+QPushButton:pressed {
+    background: #555555;  /* um cinza escuro para o clique */
+    padding-left: 5px;
+    padding-top: 3px;
+}
+</string>
+    </property>
     <property name="text">
-     <string>L o g  I n</string>
+     <string>L o g i n</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_close">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>60</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton {
+        background-color: black;  /* Cor inicial do botão */
+        color: white;
+        border-radius: 20px;
+        padding: 6px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #ffffff;  /* Tom de branco ao passar o mouse */
+        color: black;               /* Opcional: texto escuro */
+    }
+    QPushButton:pressed {
+        background-color: #e74c3c;  /* Vermelho ao clicar */
+        color: white;
+    }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/16x16/cil-x.png</normaloff>icons/16x16/cil-x.png</iconset>
     </property>
    </widget>
   </widget>
