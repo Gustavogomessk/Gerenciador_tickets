@@ -22,24 +22,28 @@ def criar_botao_com_icone(texto, icone_texto, cor_fundo="#4CAF50", cor_texto="wh
     """Cria um botão com ícone usando texto como ícone"""
     botao = QtWidgets.QPushButton()
     botao.setText(f"{icone_texto} {texto}")
-    botao.setMinimumSize(100, 45)
-    botao.setMaximumSize(120, 50)
+    botao.setMinimumSize(80, 40)
+    botao.setMaximumSize(100, 45)
     botao.setStyleSheet(f"""
         QPushButton {{
             background-color: {cor_fundo};
             color: {cor_texto};
-            border: none;
-            border-radius: 5px;
+            border: 2px solid {cor_fundo};
+            border-radius: 6px;
             font-weight: bold;
             font-size: 11px;
-            padding: 5px;
+            padding: 4px 6px;
+            text-align: center;
+            min-height: 20px;
         }}
         QPushButton:hover {{
             background-color: {cor_fundo}dd;
-            transform: scale(1.05);
+            border: 2px solid {cor_texto};
+            color: {cor_texto};
         }}
         QPushButton:pressed {{
             background-color: {cor_fundo}aa;
+            border: 2px solid {cor_texto};
         }}
     """)
     return botao
@@ -126,6 +130,10 @@ def carregar_tabela_tickets():
     # Tornar tabela somente leitura
     tb.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
     
+    # Ajustar altura das linhas para acomodar os botões
+    tb.verticalHeader().setDefaultSectionSize(60)
+    tb.verticalHeader().setMinimumSectionSize(60)
+    
     for linha, row in enumerate(registros):
         tb.insertRow(linha)
         for col, dado in enumerate(row):
@@ -146,8 +154,9 @@ def carregar_tabela_tickets():
         layout_acoes.addWidget(btn_visualizar)
         layout_acoes.addWidget(btn_editar)
         layout_acoes.addWidget(btn_excluir)
-        layout_acoes.setContentsMargins(3, 3, 3, 3)
-        layout_acoes.setSpacing(5)
+        layout_acoes.setContentsMargins(2, 2, 2, 2)
+        layout_acoes.setSpacing(3)
+        layout_acoes.setAlignment(QtCore.Qt.AlignCenter)
         
         tb.setCellWidget(linha, 7, widget_acoes)
 
@@ -186,6 +195,10 @@ def buscar_tickets():
     # Tornar tabela somente leitura
     tb.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
     
+    # Ajustar altura das linhas para acomodar os botões
+    tb.verticalHeader().setDefaultSectionSize(60)
+    tb.verticalHeader().setMinimumSectionSize(60)
+    
     for linha, row in enumerate(registros):
         tb.insertRow(linha)
         for col, dado in enumerate(row):
@@ -206,8 +219,9 @@ def buscar_tickets():
         layout_acoes.addWidget(btn_visualizar)
         layout_acoes.addWidget(btn_editar)
         layout_acoes.addWidget(btn_excluir)
-        layout_acoes.setContentsMargins(3, 3, 3, 3)
-        layout_acoes.setSpacing(5)
+        layout_acoes.setContentsMargins(2, 2, 2, 2)
+        layout_acoes.setSpacing(3)
+        layout_acoes.setAlignment(QtCore.Qt.AlignCenter)
         
         tb.setCellWidget(linha, 7, widget_acoes)
 
@@ -235,14 +249,18 @@ def carregar_tabela_users():
     # Tornar tabela somente leitura
     tb.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
     
+    # Ajustar altura das linhas para acomodar os botões
+    tb.verticalHeader().setDefaultSectionSize(60)
+    tb.verticalHeader().setMinimumSectionSize(60)
+    
     for linha, row in enumerate(registros):
         tb.insertRow(linha)
         for col, dado in enumerate(row):
             tb.setItem(linha, col, QtWidgets.QTableWidgetItem(str(dado)))
         
         # Adicionar botões de ação com ícones
-        btn_editar = criar_botao_com_icone("Editar", "✏", "#FF9800", "white")
-        btn_excluir = criar_botao_com_icone("Excluir", "🗑", "#F44336", "white")
+        btn_editar = criar_botao_com_icone("Editar", "✏", "#FF9800", "black")
+        btn_excluir = criar_botao_com_icone("Excluir", "🗑", "#F44336", "black")
         
         btn_editar.clicked.connect(lambda checked, user_id=row[0]: editar_usuario(user_id))
         btn_excluir.clicked.connect(lambda checked, user_id=row[0]: excluir_usuario(user_id))
@@ -252,8 +270,9 @@ def carregar_tabela_users():
         layout_acoes = QtWidgets.QHBoxLayout(widget_acoes)
         layout_acoes.addWidget(btn_editar)
         layout_acoes.addWidget(btn_excluir)
-        layout_acoes.setContentsMargins(3, 3, 3, 3)
-        layout_acoes.setSpacing(5)
+        layout_acoes.setContentsMargins(2, 2, 2, 2)
+        layout_acoes.setSpacing(3)
+        layout_acoes.setAlignment(QtCore.Qt.AlignCenter)
         
         tb.setCellWidget(linha, 6, widget_acoes)
 
@@ -285,14 +304,18 @@ def buscar_usuarios():
     # Tornar tabela somente leitura
     tb.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
     
+    # Ajustar altura das linhas para acomodar os botões
+    tb.verticalHeader().setDefaultSectionSize(60)
+    tb.verticalHeader().setMinimumSectionSize(60)
+    
     for linha, row in enumerate(registros):
         tb.insertRow(linha)
         for col, dado in enumerate(row):
             tb.setItem(linha, col, QtWidgets.QTableWidgetItem(str(dado)))
         
         # Adicionar botões de ação com ícones
-        btn_editar = criar_botao_com_icone("Editar", "✏", "#FF9800", "white")
-        btn_excluir = criar_botao_com_icone("Excluir", "🗑", "#F44336", "white")
+        btn_editar = criar_botao_com_icone("Editar", "✏", "#FF9800", "black")
+        btn_excluir = criar_botao_com_icone("Excluir", "🗑", "#F44336", "black")
         
         btn_editar.clicked.connect(lambda checked, user_id=row[0]: editar_usuario(user_id))
         btn_excluir.clicked.connect(lambda checked, user_id=row[0]: excluir_usuario(user_id))
@@ -302,8 +325,9 @@ def buscar_usuarios():
         layout_acoes = QtWidgets.QHBoxLayout(widget_acoes)
         layout_acoes.addWidget(btn_editar)
         layout_acoes.addWidget(btn_excluir)
-        layout_acoes.setContentsMargins(3, 3, 3, 3)
-        layout_acoes.setSpacing(5)
+        layout_acoes.setContentsMargins(2, 2, 2, 2)
+        layout_acoes.setSpacing(3)
+        layout_acoes.setAlignment(QtCore.Qt.AlignCenter)
         
         tb.setCellWidget(linha, 6, widget_acoes)
 
@@ -346,6 +370,53 @@ def editar_usuario(user_id):
     janela_editar.setWindowTitle("Editar Usuário")
     janela_editar.setModal(True)
     janela_editar.resize(400, 300)
+    
+    # Aplicar estilo para o diálogo
+    janela_editar.setStyleSheet("""
+        QDialog {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                stop:0 #1a1a2e, stop:1 #16213e);
+            color: #ffffff;
+        }
+        QLabel {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        QLineEdit, QComboBox {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid #e94560;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        QLineEdit:focus, QComboBox:focus {
+            border: 2px solid #00d2d3;
+            background-color: rgba(0, 210, 211, 0.1);
+            color: #ffffff !important;
+        }
+        QPushButton {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #e94560, stop:1 #d63031);
+            color: white !important;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+        }
+        QPushButton:hover {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #ff6b7a, stop:1 #e74c3c);
+            color: white !important;
+        }
+        QPushButton:pressed {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #c0392b, stop:1 #a93226);
+            color: white !important;
+        }
+    """)
     
     layout = QtWidgets.QVBoxLayout(janela_editar)
     
@@ -514,6 +585,65 @@ def visualizar_ticket(ticket_id):
     janela_visualizar.setModal(True)
     janela_visualizar.resize(800, 600)
     
+    # Aplicar estilo para o diálogo
+    janela_visualizar.setStyleSheet("""
+        QDialog {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                stop:0 #1a1a2e, stop:1 #16213e);
+            color: #ffffff;
+        }
+        QLabel {
+            color: #ffffff !important;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        QTextEdit {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid #e94560;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #ffffff !important;
+            font-size: 14px;
+        }
+        QTextEdit:focus {
+            border: 2px solid #00d2d3;
+            background-color: rgba(0, 210, 211, 0.1);
+            color: #ffffff !important;
+        }
+        QListWidget {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff !important;
+            border: 1px solid #e94560;
+            border-radius: 8px;
+            font-size: 13px;
+            selection-background-color: #e94560;
+        }
+        QListWidget::item {
+            color: #ffffff !important;
+            padding: 5px;
+        }
+        QPushButton {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #e94560, stop:1 #d63031);
+            color: white !important;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+        }
+        QPushButton:hover {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #ff6b7a, stop:1 #e74c3c);
+            color: white !important;
+        }
+        QPushButton:pressed {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #c0392b, stop:1 #a93226);
+            color: white !important;
+        }
+    """)
+    
     layout = QtWidgets.QVBoxLayout(janela_visualizar)
     
     # Informações do ticket
@@ -597,6 +727,53 @@ def editar_ticket(ticket_id):
     janela_editar.setWindowTitle("Editar Ticket")
     janela_editar.setModal(True)
     janela_editar.resize(500, 400)
+    
+    # Aplicar estilo para o diálogo
+    janela_editar.setStyleSheet("""
+        QDialog {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                stop:0 #1a1a2e, stop:1 #16213e);
+            color: #ffffff;
+        }
+        QLabel {
+            color: #ffffff !important;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        QLineEdit, QTextEdit, QComboBox {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid #e94560;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #ffffff !important;
+            font-size: 14px;
+        }
+        QLineEdit:focus, QTextEdit:focus, QComboBox:focus {
+            border: 2px solid #00d2d3;
+            background-color: rgba(0, 210, 211, 0.1);
+            color: #ffffff !important;
+        }
+        QPushButton {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #e94560, stop:1 #d63031);
+            color: white !important;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+        }
+        QPushButton:hover {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #ff6b7a, stop:1 #e74c3c);
+            color: white !important;
+        }
+        QPushButton:pressed {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #c0392b, stop:1 #a93226);
+            color: white !important;
+        }
+    """)
     
     layout = QtWidgets.QVBoxLayout(janela_editar)
     
@@ -715,7 +892,7 @@ login.setStyleSheet("""
     }
     QPushButton {
         background-color: #2980b9;
-        color: white;
+        color: black;
         border-radius: 10px;
         padding: 6px;
         font-weight: bold;
