@@ -48,6 +48,53 @@ def criar_botao_com_icone(texto, icone_texto, cor_fundo="#4CAF50", cor_texto="wh
     """)
     return botao
 
+# ===== Mensagem de Sucesso Padronizada =====
+def mostrar_mensagem_sucesso(janela_pai, mensagem):
+    """Exibe uma mensagem de sucesso padronizada com o estilo do sistema"""
+    msg_box = QtWidgets.QMessageBox(janela_pai)
+    msg_box.setWindowTitle("✅ Sucesso")
+    msg_box.setText(mensagem)
+    msg_box.setIcon(QtWidgets.QMessageBox.Information)
+    msg_box.setStandardButtons(QtWidgets.QMessageBox.Ok)
+    
+    # Aplicar estilo personalizado
+    msg_box.setStyleSheet("""
+        QMessageBox {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                stop:0 #1a1a2e, stop:1 #16213e);
+            color: #ffffff;
+            border: 2px solid #00d2d3;
+            border-radius: 10px;
+        }
+        QMessageBox QLabel {
+            color: #ffffff !important;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px;
+        }
+        QMessageBox QPushButton {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #00d2d3, stop:1 #00a8a8);
+            color: white !important;
+            border-radius: 8px;
+            padding: 8px 20px;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            min-width: 80px;
+        }
+        QMessageBox QPushButton:hover {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #00e6e6, stop:1 #00b8b8);
+        }
+        QMessageBox QPushButton:pressed {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                stop:0 #009999, stop:1 #007777);
+        }
+    """)
+    
+    return msg_box.exec_()
+
 # =====  LOGIN  =====
 def fazer_login():
     global usuario_logado
@@ -344,7 +391,7 @@ def cadastrar_usuario():
             cursor.execute("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (%s, %s, %s, %s)",
                            (nome, email, senha, tipo))
             conn.commit()
-            QtWidgets.QMessageBox.information(tela, "Sucesso", "Usuário cadastrado.")
+            mostrar_mensagem_sucesso(tela, "Usuário cadastrado com sucesso!")
             tela.name_user.clear(); tela.email_user.clear(); tela.Password_user.clear()
         except mysql.connector.Error as e:
             QtWidgets.QMessageBox.critical(tela, "Erro no cadastro", str(e))
@@ -467,7 +514,7 @@ def editar_usuario(user_id):
                                 tipo_combo.currentText().lower(), user_id))
             
             conn.commit()
-            QtWidgets.QMessageBox.information(janela_editar, "Sucesso", "Usuário atualizado.")
+            mostrar_mensagem_sucesso(janela_editar, "Usuário atualizado com sucesso!")
             janela_editar.close()
             carregar_tabela_users()  # Recarregar tabela
         except mysql.connector.Error as e:
@@ -508,7 +555,7 @@ def excluir_usuario(user_id):
             cursor = conn.cursor()
             cursor.execute("DELETE FROM usuarios WHERE id = %s", (user_id,))
             conn.commit()
-            QtWidgets.QMessageBox.information(tela, "Sucesso", "Usuário excluído.")
+            mostrar_mensagem_sucesso(tela, "Usuário excluído com sucesso!")
             carregar_tabela_users()  # Recarregar tabela
         except mysql.connector.Error as e:
             QtWidgets.QMessageBox.critical(tela, "Erro", f"Erro ao excluir usuário: {e}")
@@ -549,7 +596,7 @@ def cadastrar_ticket():
                           VALUES (%s, %s, %s, %s, %s)""",
                        (numero, titulo, descricao, cliente_id, prioridade))
         conn.commit()
-        QtWidgets.QMessageBox.information(tela, "Sucesso", "Ticket criado.")
+        mostrar_mensagem_sucesso(tela, "Ticket criado com sucesso!")
         tela.titulo_ticket.clear(); tela.descricao_ticket.clear()
     except mysql.connector.Error as e:
         QtWidgets.QMessageBox.critical(tela, "Erro no cadastro", str(e))
@@ -701,7 +748,7 @@ def adicionar_comentario(ticket_id, janela_pai):
                               VALUES (%s, %s, %s)""",
                            (ticket_id, usuario_logado["id"], comentario))
             conn.commit()
-            QtWidgets.QMessageBox.information(janela_pai, "Sucesso", "Comentário adicionado.")
+            mostrar_mensagem_sucesso(janela_pai, "Comentário adicionado com sucesso!")
             janela_pai.close()
             visualizar_ticket(ticket_id)  # Recarregar a janela
         except mysql.connector.Error as e:
@@ -817,7 +864,7 @@ def editar_ticket(ticket_id):
                             prioridade_combo.currentText().lower(), 
                             status_combo.currentText().lower().replace(" ", "_"), ticket_id))
             conn.commit()
-            QtWidgets.QMessageBox.information(janela_editar, "Sucesso", "Ticket atualizado.")
+            mostrar_mensagem_sucesso(janela_editar, "Ticket atualizado com sucesso!")
             janela_editar.close()
             carregar_tabela_tickets()  # Recarregar tabela
         except mysql.connector.Error as e:
@@ -846,7 +893,7 @@ def excluir_ticket(ticket_id):
             cursor = conn.cursor()
             cursor.execute("DELETE FROM tickets WHERE id = %s", (ticket_id,))
             conn.commit()
-            QtWidgets.QMessageBox.information(tela, "Sucesso", "Ticket excluído.")
+            mostrar_mensagem_sucesso(tela, "Ticket excluído com sucesso!")
             carregar_tabela_tickets()  # Recarregar tabela
         except mysql.connector.Error as e:
             QtWidgets.QMessageBox.critical(tela, "Erro", f"Erro ao excluir ticket: {e}")
